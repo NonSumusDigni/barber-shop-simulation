@@ -30,6 +30,8 @@ impl Event for HaircutComplete {
             ),
         );
 
+        log(&time, &format!("Customer-{} leaves satisfied", customer_id));
+
         let active_barber_name = if barber.shift_state == BarberShiftState::FinishingUp {
             log(&time, &format!("{} ended shift", barber.name.clone()));
             next_barber.map(|b| b.name).unwrap_or_default()
